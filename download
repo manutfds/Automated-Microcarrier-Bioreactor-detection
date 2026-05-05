@@ -1,0 +1,40 @@
+# Byte-compiled files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+env/
+.venv/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Model weights (large files)
+*.pt
+*.pth
+*.onnx
+weights/
+
+# Training outputs
+runs/
+outputs/
+results/
+
+# Data
+datasets/
+data/images/
+data/labels/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log

@@ -1,0 +1,45 @@
+# =============================================================================
+# Dataset Configuration Template
+# =============================================================================
+# Copy this file and modify paths for your setup.
+# Usage: yolo train data=data.yaml model=yolov8l.pt epochs=150
+# =============================================================================
+
+# Dataset root path
+path: /path/to/your/dataset
+
+# Relative paths to image directories
+train: images/train
+val: images/val
+test: images/test
+
+# Classes
+nc: 2
+names:
+  0: EMPTY    # Non-colonized microcarrier
+  1: FULL     # Colonized microcarrier
+
+# =============================================================================
+# Expected directory structure:
+# =============================================================================
+#
+# /path/to/your/dataset/
+# ├── images/
+# │   ├── train/
+# │   │   ├── img001.jpg
+# │   │   └── ...
+# │   ├── val/
+# │   └── test/
+# ├── labels/
+# │   ├── train/
+# │   │   ├── img001.txt  (same name as image)
+# │   │   └── ...
+# │   ├── val/
+# │   └── test/
+# └── data.yaml
+#
+# =============================================================================
+# Label format (one line per object):
+#   <class_id> <x_center> <y_center> <width> <height>
+#   All values normalized 0-1
+# =============================================================================

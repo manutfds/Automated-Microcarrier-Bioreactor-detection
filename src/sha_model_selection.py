@@ -3,7 +3,7 @@
 ATENEA Project - Successive Halving Algorithm (SHA) for Model Selection
 ================================================================================
 
-This script implements the SHA model selection strategy used in the ATENEA
+This script implements the SHA model selection strategy used in the
 project for efficiently identifying the best-performing YOLO architecture.
 
 SHA is a principled early-stopping method that:

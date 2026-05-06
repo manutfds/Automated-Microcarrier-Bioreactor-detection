@@ -14,7 +14,7 @@
 
 ## 🎯 Purpose
 
-This repository provides **complete methodological documentation** to enable reproducibility of our approach. Due to institutional IP restrictions, the original dataset and trained weights cannot be released. However, researchers can replicate our methodology on their own microcarrier datasets using the materials provided here.
+This repository provides **complete methodological documentation** to enable reproducibility of our approach. Due to institutional IP restrictions, the original dataset and trained weights cannot be released. However, researchers can replicate our methodology on their own microcarrier datasets using the materials provided here. Please direct any queries or comments regarding the reproducibility of the file to the corresponding authors, whose email addresses are listed at the end of the document. 
 
 ---
 
@@ -159,7 +159,7 @@ See [configs/sha_config.yaml](configs/sha_config.yaml) for complete configuratio
 
 ---
 
-## ⚠️ Limitations
+## ⚠️ Limitations comments
 
 1. **No public dataset** — Original images are proprietary; methodology must be applied to your own data
 2. **Single laboratory** — Results validated on images from one microscopy setup

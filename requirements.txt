@@ -4,6 +4,8 @@
 # Install with: pip install -r requirements.txt
 # =============================================================================
 
+The following lists all the requirements (including their versions) needed to replicate this study. 
+
 # Core ML Framework
 ultralytics>=8.3.0
 torch>=2.0.0

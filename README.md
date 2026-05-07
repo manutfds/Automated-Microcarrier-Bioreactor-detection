@@ -179,6 +179,43 @@ All models required <0.5 GB GPU memory, enabling deployment on standard laborato
 
 ---
 
+🖼️ Image Preprocessing
+Original Image Characteristics
+Images were acquired using a fluorescence-inverted microscope (Leica DMI6000) with variable native resolutions depending on acquisition settings and microscopy configuration.
+Resize Method
+All images were standardized to 640×640 pixels using direct rescaling (also known as "stretch" or "resize without preserving aspect ratio"):
+python# Preprocessing applied by Ultralytics YOLO during training/inference
+import cv2
+
+# Direct resize to 640x640 (default YOLO behavior)
+resized_image = cv2.resize(original_image, (640, 640), interpolation=cv2.INTER_LINEAR)
+Why 640×640?
+ReasonExplanationYOLO standard640×640 is the default input size for YOLOv8/v11, optimized for the model architectureMemory efficiencyFits comfortably in GPU memory (4 GB VRAM in our setup)Speed-accuracy balanceLarger sizes (1280) improve accuracy marginally but increase inference time significantlyConsistencyFixed size ensures uniform feature map dimensions across all images
+Impact on Microcarrier Detection
+The direct rescaling approach was deemed appropriate for this application because:
+
+Near-circular morphology: Microcarriers have aspect ratios tightly centered around 1.0 (see EDA results), so moderate geometric distortion has minimal impact on detection.
+Relative proportions preserved: The ratio between FULL and EMPTY microcarriers remains constant regardless of absolute scale.
+Transfer learning compatibility: COCO-pretrained weights expect 640×640 input; matching this size maximizes transfer learning effectiveness.
+
+Bounding Box Coordinate Handling
+Annotations are stored in normalized YOLO format (values 0-1), which automatically adapts to any image size:
+# Format: <class_id> <x_center> <y_center> <width> <height>
+# All values normalized to image dimensions
+
+1 0.4521 0.3125 0.0856 0.0923
+During training, Ultralytics applies the resize transformation and automatically scales bounding box coordinates accordingly, ensuring geometric consistency between images and annotations.
+Recommendations for New Datasets
+If applying this methodology to your own images:
+
+Variable input sizes are acceptable — YOLO handles resize internally
+Maintain consistent microscopy settings within your dataset when possible
+Consider aspect ratio — if your images have extreme aspect ratios (e.g., 4:1), consider padding instead of direct resize
+Test both 640 and 1280 — larger input sizes may improve detection of small or densely packed microcarriers. Be careful, larger images sizes requires more computational demands.
+
+
+---
+
 ## 📝 Citation
 
 ```bibtex
